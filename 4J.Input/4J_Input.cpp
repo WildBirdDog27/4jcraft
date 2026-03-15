@@ -339,26 +339,40 @@ int C_4JInput::GetHotbarSlotPressed(int iPad) {
 // KFN = Keyboard functions, CFN = Controller functions, AFN = Axis functions
 #define ACTION_CASES(KFN, CFN, AFN)                                            \
     case ACTION_MENU_UP:                                                       \
-        return KFN(SDL_SCANCODE_UP) || CFN(SDL_CONTROLLER_BUTTON_DPAD_UP);     \
+        return KFN(SDL_SCANCODE_UP) || CFN(SDL_CONTROLLER_BUTTON_DPAD_UP) ||   \
+               (AFN(SDL_CONTROLLER_AXIS_LEFTY) &&                              \
+                axisVal[SDL_CONTROLLER_AXIS_LEFTY] < 0);                       \
     case ACTION_MENU_DOWN:                                                     \
-        return KFN(SDL_SCANCODE_DOWN) || CFN(SDL_CONTROLLER_BUTTON_DPAD_DOWN); \
+        return KFN(SDL_SCANCODE_DOWN) ||                                       \
+               CFN(SDL_CONTROLLER_BUTTON_DPAD_DOWN) ||                         \
+               (AFN(SDL_CONTROLLER_AXIS_LEFTY) &&                              \
+                axisVal[SDL_CONTROLLER_AXIS_LEFTY] > 0);                       \
     case ACTION_MENU_LEFT:                                                     \
-        return KFN(SDL_SCANCODE_LEFT) || CFN(SDL_CONTROLLER_BUTTON_DPAD_LEFT); \
+        return KFN(SDL_SCANCODE_LEFT) ||                                       \
+               CFN(SDL_CONTROLLER_BUTTON_DPAD_LEFT) ||                         \
+               (AFN(SDL_CONTROLLER_AXIS_LEFTX) &&                              \
+                axisVal[SDL_CONTROLLER_AXIS_LEFTX] < 0);                       \
     case ACTION_MENU_RIGHT:                                                    \
         return KFN(SDL_SCANCODE_RIGHT) ||                                      \
-               CFN(SDL_CONTROLLER_BUTTON_DPAD_RIGHT);                          \
+               CFN(SDL_CONTROLLER_BUTTON_DPAD_RIGHT) ||                        \
+               (AFN(SDL_CONTROLLER_AXIS_LEFTX) &&                              \
+                axisVal[SDL_CONTROLLER_AXIS_LEFTX] > 0);                       \
     case ACTION_MENU_PAGEUP:                                                   \
         return KFN(SDL_SCANCODE_PAGEUP);                                       \
     case ACTION_MENU_PAGEDOWN:                                                 \
         return KFN(SDL_SCANCODE_PAGEDOWN);                                     \
     case ACTION_MENU_OK:                                                       \
-        return KFN(SDL_SCANCODE_RETURN) || CFN(SDL_CONTROLLER_BUTTON_A);       \
+        return KFN(SDL_SCANCODE_RETURN) || KFN(SDL_SCANCODE_Z) ||              \
+               CFN(SDL_CONTROLLER_BUTTON_A);                                   \
     case ACTION_MENU_CANCEL:                                                   \
-        return KFN(SDL_SCANCODE_ESCAPE) || CFN(SDL_CONTROLLER_BUTTON_B);       \
+        return KFN(SDL_SCANCODE_ESCAPE) || KFN(SDL_SCANCODE_X) ||              \
+               CFN(SDL_CONTROLLER_BUTTON_B);                                   \
     case ACTION_MENU_A:                                                        \
-        return KFN(SDL_SCANCODE_Z) || CFN(SDL_CONTROLLER_BUTTON_A);            \
+        return KFN(SDL_SCANCODE_Z) || KFN(SDL_SCANCODE_RETURN) ||              \
+               CFN(SDL_CONTROLLER_BUTTON_A);                                   \
     case ACTION_MENU_B:                                                        \
-        return KFN(SDL_SCANCODE_X) || CFN(SDL_CONTROLLER_BUTTON_B);            \
+        return KFN(SDL_SCANCODE_X) || KFN(SDL_SCANCODE_ESCAPE) ||              \
+               CFN(SDL_CONTROLLER_BUTTON_B);                                   \
     case ACTION_MENU_X:                                                        \
         return KFN(SDL_SCANCODE_C) || CFN(SDL_CONTROLLER_BUTTON_X);            \
     case ACTION_MENU_Y:                                                        \
