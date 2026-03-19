@@ -1,0 +1,11 @@
+<map id="SonyRemoteStorage" name="SonyRemoteStorage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="179,196,334,221"/>
+<area shape="rect" id="Node000002" href="$structSAVE__INFO.html" title=" " alt="" coords="45,93,140,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,131,107,152,120,170,148,188,180,198,178,203,146,193,116,174,102,155,94,133"/>
+<area shape="rect" id="Node000003" href="$structCONTAINER__METADATA.html" title=" " alt="" coords="5,5,180,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,45,95,93,90,93,90,45"/>
+<area shape="rect" id="Node000004" href="$structSceRemoteStorageData.html" title=" " alt="" coords="168,93,345,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="259,133,259,196,254,196,254,133"/>
+<area shape="rect" id="Node000005" href="$classC4JThread.html" title=" " alt="" coords="370,93,458,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="410,133,400,154,384,174,361,189,335,199,334,194,358,184,380,170,395,152,405,131"/>
+</map>
